@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heladería Dulce Frío – Helados artesanales</title>
+
+  <!-- Google Fonts: Pacifico (display) + Montserrat (texto) -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-primary: #ff6f91;   /* pink */
+      --color-bg: #fdf7f5;        /* suave crema pastel */
+      --color-text: #333;
+      --radius: .5rem;
+      --font-display: 'Pacifico', cursive;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin:0; font-family: var(--font-body); background:#fff; color:var(--color-text);
+      line-height:1.6;
+    }
+    a { color: var(--color-primary); text-decoration:none; }
+    a:focus { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+
+    header {
+      background: var(--color-bg);
+      padding: 2rem 1rem;
+      text-align:center;
+    }
+    .hero {
+      max-width: 800px;
+      margin:0 auto;
+    }
+    .hero svg {
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 1rem;
+      animation: float 6s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero svg { animation:none; }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      margin: .5rem 0;
+      color: var(--color-primary);
+    }
+    h2 {
+      font-size: 1.2rem;
+      margin: .5rem 0 1.5rem;
+      font-weight:400;
+    }
+    .cta {
+      display:inline-block;
+      padding:.75rem 1.5rem;
+      background: var(--color-primary);
+      color:#fff;
+      border:none;
+      border-radius: var(--radius);
+      font-weight:600;
+      cursor:pointer;
+      transition:background .3s;
+    }
+    .cta:focus, .cta:hover { background:#e65b80; }
+
+    section { padding:2rem 1rem; }
+    .grid {
+      display:grid;
+      gap:1.5rem;
+      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    }
+    .card {
+      background:#fff;
+      border-radius: var(--radius);
+      box-shadow:0 2px 6px rgba(0,0,0,.1);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    .card img {
+      width:100%; height:auto;
+    }
+    .card-content {
+      padding:1rem;
+      flex-grow:1;
+    }
+    .card h3 {
+      margin:0 0 .5rem;
+      color:var(--color-primary);
+    }
+    footer {
+      background:#fafafa;
+      text-align:center;
+      padding:1rem;
+      font-size:.9rem;
+    }
+    @media (max-width:600px){
+      h1{font-size:2rem;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="hero">
+    <!-- SVG de cono de helado estilizado -->
+    <svg viewBox="0 0 200 260" aria-label="Cono de helado con tres bolas de colores">
+      <defs>
+        <linearGradient id="scoop1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffb3ba"/>
+          <stop offset="100%" stop-color="#ff8a80"/>
+        </linearGradient>
+        <linearGradient id="scoop2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffdfba"/>
+          <stop offset="100%" stop-color:#ffd180"/>
+        </linearGradient>
+        <linearGradient id="scoop3" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#baffc9"/>
+          <stop offset="100%" stop-color="#a8e6cf"/>
+        </linearGradient>
+      </defs>
+      <path d="M100 250 L70 150 Q100 130 130 150 Z" fill="#d7a57c"/>
+      <circle cx="100" cy="120" r="30" fill="url(#scoop1)"/>
+      <circle cx="100" cy="80" r="30" fill="url(#scoop2)"/>
+      <circle cx="100" cy="40" r="30" fill="url(#scoop3)"/>
+    </svg>
+
+    <h1>Heladería Dulce Frío</h1>
+    <h2>Helados artesanales, frescos y felices</h2>
+    <button class="cta" onclick="document.getElementById('sabores').scrollIntoView({behavior:'smooth'});">
+      Ver sabores
+    </button>
+  </div>
+</header>
+
+<main>
+  <section id="sabores">
+    <h2 style="text-align:center; margin-bottom:1rem;">Nuestros sabores</h2>
+    <div class="grid">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=400&q=80" alt="Helado de fresa">
+        <div class="card-content">
+          <h3>Fresa del Campo</h3>
+          <p>Fresas frescas de la zona, con un toque de miel de flores silvestres.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1589923188900-1c5c6c5e0d2b?auto=format&fit=crop&w=400&q=80" alt="Helado de mango">
+        <div class="card-content">
+          <h3>Mango Tropical</h3>
+          <p>Mango maduro, pulpa natural y un chorrito de lima para realzar su frescura.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80" alt="Helado de chocolate">
+        <div class="card-content">
+          <h3>Chocolate Intenso</h3>
+          <p>Cacao 70% de origen único, con trocitos de chocolate amargo.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <h2 style="text-align:center; margin-bottom:1rem;">Sobre nosotros</h2>
+    <p style="max-width:800px; margin:auto; text-align:center;">
+      En <strong>Heladería Dulce Frío</strong> creemos que cada bola de helado es una pequeña celebración. 
+      Elaboramos nuestras recetas a mano, usando solo ingredientes locales y de temporada. 
+      Nuestro objetivo es que cada visita sea un momento de alegría, tanto para niños como para adultos.
+    </p>
+  </section>
+
+  <section id="contacto">
+    <h2 style="text-align:center; margin-bottom:1rem;">Contacto</h2>
+    <p style="text-align:center;">
+      📍 Calle del Sol 123, Ciudad del Sabor<br>
+      📞 <a href="tel:+34123456789">+34 123 456 789</a><br>
+      ✉️ <a href="mailto:info@dulcefrio.com">info@dulcefrio.com</a>
+    </p>
+  </section>
+</main>
+
+<footer>
+  © 2026 Heladería Dulce Frío – Todos los derechos reservados.
+</footer>
+
+<script>
+  // Si el usuario prefiere reducir movimiento, no hacemos nada extra.
+  // El único script aquí es para el scroll suave del botón CTA (ya manejado con scrollIntoView).
+  // Se mantiene por compatibilidad con navegadores que no soportan scrollIntoView con options.
+  document.querySelectorAll('.cta').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      const target = document.getElementById('sabores');
+      if (target) {
+        if ('scrollBehavior' in document.documentElement.style) {
+          target.scrollIntoView({behavior:'smooth'});
+        } else {
+          target.scrollIntoView();
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
