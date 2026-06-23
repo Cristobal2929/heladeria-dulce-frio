@@ -3,212 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Heladería Dulce Frío – Helados artesanales</title>
+  <title>Heladería Dulce Frío – Sabores artesanales</title>
 
-  <!-- Google Fonts: Pacifico (display) + Montserrat (texto) -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --color-primary: #ff6f91;   /* pink */
-      --color-bg: #fdf7f5;        /* suave crema pastel */
-      --color-text: #333;
-      --radius: .5rem;
-      --font-display: 'Pacifico', cursive;
-      --font-body: 'Montserrat', sans-serif;
+      --color-primary: #4a90e2;   /* azul pastel */
+      --color-accent:  #a16eff;   /* violeta suave */
+      --bg: #f7fbff;
+      --text: #2c2c2c;
+      --radius: .6rem;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
     body {
-      margin:0; font-family: var(--font-body); background:#fff; color:var(--color-text);
-      line-height:1.6;
+      margin:0; font-family: 'Montserrat', sans-serif; background:#f7fbff; color:#2c2c2c;
+      line-height:1.6; overflow-x:hidden;
     }
-    a { color: var(--color-primary); text-decoration:none; }
-    a:focus { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+    a { color:var(--color-primary); text-decoration:none; }
+    a:focus-visible { outline:3px solid var(--color-accent); outline-offset:2px; }
 
     header {
-      background: var(--color-bg);
-      padding: 2rem 1rem;
-      text-align:center;
-    }
-    .hero {
-      max-width: 800px;
-      margin:0 auto;
-    }
-    .hero svg {
-      width: 100%;
-      max-width: 300px;
-      margin-bottom: 1rem;
-      animation: float 6s ease-in-out infinite;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .hero svg { animation:none; }
-    }
-    @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    h1 {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      margin: .5rem 0;
-      color: var(--color-primary);
-    }
-    h2 {
-      font-size: 1.2rem;
-      margin: .5rem 0 1.5rem;
-      font-weight:400;
-    }
-    .cta {
-      display:inline-block;
-      padding:.75rem 1.5rem;
       background: var(--color-primary);
       color:#fff;
-      border:none;
-      border-radius: var(--radius);
-      font-weight:600;
-      cursor:pointer;
-      transition:background .3s;
+      padding:1rem;
+      position:sticky; top:0; z-index:10;
     }
-    .cta:focus, .cta:hover { background:#e65b80; }
+    header .logo { font-family:'Pacifico', cursive; font-size:1.8rem; }
+    nav { margin-top:.5rem; }
+    nav a { margin-right:1rem; font-weight:600; color:#fff; }
+    nav a:hover { text-decoration:underline; }
 
-    section { padding:2rem 1rem; }
-    .grid {
+    .hero {
+      background: linear-gradient(135deg, #ffefd5 0%, #fff1e0 100%);
+      padding:4rem 1rem 2rem;
+      text-align:center;
+      position:relative;
+    }
+    .hero::after {
+      content:"";
+      position:absolute;
+      bottom:-1px; left:0; right:0;
+      height:3rem;
+      background: var(--bg);
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+    }
+    .hero h1 {
+      font-family:'Pacifico', cursive;
+      font-size:2.8rem;
+      margin:0 0 .5rem;
+      color:#4a90e2;
+    }
+    .hero p {
+      font-size:1.2rem; max-width:600px; margin:auto;
+    }
+    .hero img {
+      max-width:100%; height:auto; margin-top:1.5rem;
+      border-radius: var(--radius);
+      box-shadow:0 4px 12px rgba(0,0,0,.1);
+    }
+
+    .section {
+      padding:2rem 1rem;
+    }
+    .section h2 {
+      font-family:'Pacifico', cursive;
+      font-size:2rem;
+      text-align:center;
+      margin-bottom:1.5rem;
+      color:var(--color-primary);
+    }
+    .flavors {
       display:grid;
       gap:1.5rem;
-      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
     }
     .card {
       background:#fff;
-      border-radius: var(--radius);
-      box-shadow:0 2px 6px rgba(0,0,0,.1);
+      border-radius:var(--radius);
       overflow:hidden;
-      display:flex;
-      flex-direction:column;
+      box-shadow:0 2px 8px rgba(0,0,0,.07);
+      transition:transform .3s ease;
     }
+    .card:hover { transform:scale(1.03); }
     .card img {
-      width:100%; height:auto;
-    }
-    .card-content {
-      padding:1rem;
-      flex-grow:1;
+      width:100%; height:150px; object-fit:cover;
     }
     .card h3 {
-      margin:0 0 .5rem;
-      color:var(--color-primary);
+      margin:0.5rem; font-size:1.2rem; color:var(--color-primary);
     }
+    .card p {
+      margin:0.5rem; font-size:.9rem; color:#555;
+    }
+
+    .contact {
+      background: var(--color-primary);
+      color:#fff;
+      border-radius: var(--radius);
+      max-width:600px; margin:auto;
+      padding:2rem;
+    }
+    .contact label { display:block; margin-top:.8rem; }
+    .contact input,
+    .contact textarea {
+      width:100%; padding:.5rem; margin-top:.3rem;
+      border:none; border-radius:.3rem;
+    }
+    .contact button {
+      margin-top:1rem; padding:.7rem 1.5rem;
+      background:#fff; color:var(--color-primary);
+      border:none; border-radius:.3rem;
+      font-weight:600; cursor:pointer;
+    }
+    .contact button:focus-visible { outline:3px solid var(--color-accent); }
+
     footer {
-      background:#fafafa;
-      text-align:center;
-      padding:1rem;
-      font-size:.9rem;
+      text-align:center; padding:1rem;
+      font-size:.9rem; color:#777;
     }
-    @media (max-width:600px){
-      h1{font-size:2rem;}
+
+    /* Responsive */
+    @media (max-width:600px) {
+      .hero h1 {font-size:2.2rem;}
+      nav a {display:block; margin:0.5rem 0;}
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition:none !important; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="hero">
-    <!-- SVG de cono de helado estilizado -->
-    <svg viewBox="0 0 200 260" aria-label="Cono de helado con tres bolas de colores">
-      <defs>
-        <linearGradient id="scoop1" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#ffb3ba"/>
-          <stop offset="100%" stop-color="#ff8a80"/>
-        </linearGradient>
-        <linearGradient id="scoop2" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#ffdfba"/>
-          <stop offset="100%" stop-color:#ffd180"/>
-        </linearGradient>
-        <linearGradient id="scoop3" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#baffc9"/>
-          <stop offset="100%" stop-color="#a8e6cf"/>
-        </linearGradient>
-      </defs>
-      <path d="M100 250 L70 150 Q100 130 130 150 Z" fill="#d7a57c"/>
-      <circle cx="100" cy="120" r="30" fill="url(#scoop1)"/>
-      <circle cx="100" cy="80" r="30" fill="url(#scoop2)"/>
-      <circle cx="100" cy="40" r="30" fill="url(#scoop3)"/>
-    </svg>
-
-    <h1>Heladería Dulce Frío</h1>
-    <h2>Helados artesanales, frescos y felices</h2>
-    <button class="cta" onclick="document.getElementById('sabores').scrollIntoView({behavior:'smooth'});">
-      Ver sabores
-    </button>
-  </div>
+  <div class="logo">Dulce Frío</div>
+  <nav>
+    <a href="#sabores">Sabores</a>
+    <a href="#ubicacion">Ubicación</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
 </header>
 
-<main>
-  <section id="sabores">
-    <h2 style="text-align:center; margin-bottom:1rem;">Nuestros sabores</h2>
-    <div class="grid">
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=400&q=80" alt="Helado de fresa">
-        <div class="card-content">
-          <h3>Fresa del Campo</h3>
-          <p>Fresas frescas de la zona, con un toque de miel de flores silvestres.</p>
-        </div>
-      </article>
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1589923188900-1c5c6c5e0d2b?auto=format&fit=crop&w=400&q=80" alt="Helado de mango">
-        <div class="card-content">
-          <h3>Mango Tropical</h3>
-          <p>Mango maduro, pulpa natural y un chorrito de lima para realzar su frescura.</p>
-        </div>
-      </article>
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80" alt="Helado de chocolate">
-        <div class="card-content">
-          <h3>Chocolate Intenso</h3>
-          <p>Cacao 70% de origen único, con trocitos de chocolate amargo.</p>
-        </div>
-      </article>
+<section class="hero">
+  <h1>¡Sabores artesanales que derriten corazones!</h1>
+  <p>En Dulce Frío transformamos la mejor leche y fruta fresca en creaciones que recuerdas con una sonrisa.</p>
+  <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=800&q=80" alt="Cucurucho de helado con varios sabores">
+</section>
+
+<section id="sabores" class="section">
+  <h2>Nuestros sabores</h2>
+  <div class="flavors">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80" alt="Helado de vainilla">
+      <h3>Vainilla de Madagascar</h3>
+      <p>Clásica, cremosa y perfumada con auténtica vainilla natural.</p>
     </div>
-  </section>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1589302167966-5c2c0c5c5c2c?auto=format&fit=crop&w=400&q=80" alt="Helado de fresa">
+      <h3>Fresa del Valle</h3>
+      <p>Frescura de fruta recién cosechada, con trocitos de fresa.</p>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1589302167965-6c2c0c5c5c2c?auto=format&fit=crop&w=400&q=80" alt="Helado de chocolate">
+      <h3>Chocolate amargo 70%</h3>
+      <p>Intenso, con cacao de origen único y un toque de sal marina.</p>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1589302167964-7c2c0c5c5c2c?auto=format&fit=crop&w=400&q=80" alt="Helado de mango">
+      <h3>Mango tropical</h3>
+      <p>Exótico y jugoso, con pulpa de mango maduro.</p>
+    </div>
+  </div>
+</section>
 
-  <section id="sobre">
-    <h2 style="text-align:center; margin-bottom:1rem;">Sobre nosotros</h2>
-    <p style="max-width:800px; margin:auto; text-align:center;">
-      En <strong>Heladería Dulce Frío</strong> creemos que cada bola de helado es una pequeña celebración. 
-      Elaboramos nuestras recetas a mano, usando solo ingredientes locales y de temporada. 
-      Nuestro objetivo es que cada visita sea un momento de alegría, tanto para niños como para adultos.
-    </p>
-  </section>
+<section id="ubicacion" class="section">
+  <h2>¿Dónde encontrarnos?</h2>
+  <p style="text-align:center;">Calle del Sol 123, Barrio Helado – Ciudad Dulce<br>Abierto de 10:00 a 22:00, todos los días.</p>
+  <div style="text-align:center;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019123456789!2d-122.419415!3d37.774929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808c0c0c0c0c%3A0x0!2sHelader%C3%ADa%20Dulce%20Fr%C3%ADo!5e0!3m2!1ses!2s!4v1600000000000" width="90%" height="250" style="border:0; border-radius:var(--radius);" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
 
-  <section id="contacto">
-    <h2 style="text-align:center; margin-bottom:1rem;">Contacto</h2>
-    <p style="text-align:center;">
-      📍 Calle del Sol 123, Ciudad del Sabor<br>
-      📞 <a href="tel:+34123456789">+34 123 456 789</a><br>
-      ✉️ <a href="mailto:info@dulcefrio.com">info@dulcefrio.com</a>
-    </p>
-  </section>
-</main>
+<section id="contacto" class="section">
+  <h2>¡Escríbenos!</h2>
+  <form class="contact" action="#" method="POST" onsubmit="return false;">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="mensaje">Mensaje</label>
+    <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
+</section>
 
 <footer>
-  © 2026 Heladería Dulce Frío – Todos los derechos reservados.
+  © 2026 Dulce Frío – Todos los derechos reservados.
 </footer>
 
 <script>
-  // Si el usuario prefiere reducir movimiento, no hacemos nada extra.
-  // El único script aquí es para el scroll suave del botón CTA (ya manejado con scrollIntoView).
-  // Se mantiene por compatibilidad con navegadores que no soportan scrollIntoView con options.
-  document.querySelectorAll('.cta').forEach(btn=>{
-    btn.addEventListener('click', e=>{
-      const target = document.getElementById('sabores');
-      if (target) {
-        if ('scrollBehavior' in document.documentElement.style) {
-          target.scrollIntoView({behavior:'smooth'});
-        } else {
-          target.scrollIntoView();
-        }
-      }
+  // Navegación suave (solo si el usuario no ha activado reduce motion)
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced) {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
     });
-  });
+  }
 </script>
 </body>
 </html>
